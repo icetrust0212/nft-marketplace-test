@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Mainnet, DAppProvider, BSCTestnet } from '@usedapp/core'
+
+const config = {
+  readOnlyChainId: BSCTestnet.chainId,
+  readOnlyUrls: {
+    [BSCTestnet.chainId]: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+  },
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <DAppProvider config={config}>
+      <App />
+    </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
